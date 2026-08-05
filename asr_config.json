@@ -1,0 +1,14 @@
+{
+  "app_id": "21d87645",
+  "api_key": "2df391fc08aaf9b920e43aff242f9115",
+  "api_secret": "ODY1NTY0YzcxN2FlOWU0YjBmZmEzYTQw",
+  "hotkey": "<f9>",
+  "language": "zh_cn",
+  "accent": "mandarin",
+  "sample_rate": 16000,
+  "punctuation": true,
+  "auto_copy": true,
+  "auto_save_text": true,
+  "max_seconds": 120,
+  "save_dir": ""
+}

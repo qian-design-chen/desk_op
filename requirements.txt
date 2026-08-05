@@ -1,0 +1,10 @@
+PySide6-Essentials==6.8.3
+paramiko>=2.8.1
+pyinstaller>=6.0
+pillow>=10.0
+openpyxl>=3.1
+xlrd>=2.0
+websocket-client>=1.6
+sounddevice>=0.4.6
+numpy>=1.26
+pynput>=1.7.6

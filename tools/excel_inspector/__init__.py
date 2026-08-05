@@ -1,0 +1,1 @@
+"""Excel batch inspection tool."""
