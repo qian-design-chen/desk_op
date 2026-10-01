@@ -35,7 +35,7 @@ class MicRecorder:
 
     def _run(self):
         try:
-            with sd.InputStream(
+            with sd.RawInputStream(
                 samplerate=self.sample_rate,
                 channels=self.channels,
                 dtype="int16",
@@ -49,7 +49,7 @@ class MicRecorder:
     def _callback(self, indata, frames, time_info, status):
         if self._stop.is_set():
             raise sd.CallbackAbort
-        self._chunks.append(indata.copy().tobytes())
+        self._chunks.append(bytes(indata))
 
     def stop(self):
         self._stop.set()

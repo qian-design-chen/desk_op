@@ -1503,6 +1503,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--self-test", action="store_true", help="启动后自动关闭，用于验证程序可运行")
     parser.add_argument("--voice-test", action="store_true", help="启动后播报一句语音测试并自动关闭")
     parser.add_argument("--asr-test-audio", help="用 WAV 文件验证语音识别链路并退出")
+    parser.add_argument("--asr-mic-test", action="store_true", help="录音自检并退出")
     parser.add_argument("--tool-test", action="store_true", help="启动后打开批量解压工具并自动关闭")
     parser.add_argument("--excel-test", action="store_true", help="启动后打开Excel批量检测工具并自动关闭")
     args = parser.parse_args(argv)
@@ -1513,6 +1514,17 @@ def main(argv: list[str] | None = None) -> int:
         print(text)
         return 0
 
+    if args.asr_mic_test:
+        setup_logging()
+        import time
+        from recorder import MicRecorder
+        rec = MicRecorder(sample_rate=16000)
+        rec.start()
+        time.sleep(1.0)
+        pcm = rec.stop()
+        logger.info("麦克风录音自检完成：%d 字节", len(pcm))
+        print(f"mic ok {len(pcm)}")
+        return 0
     qt_app = QApplication.instance() or QApplication([])
     if args.data:
         setup_logging(Path(args.data).expanduser().resolve().parent / "logs")
